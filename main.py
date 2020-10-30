@@ -1,11 +1,9 @@
 import game
-
+UP = (0,-1)
+DOWN = (0,1)
+LEFT = (-1,0)
+RIGHT = (1,0)
 g = game.Game()
-a= (0,1)
-b= (2,3)
-c = (a[0] + b[0], a[1] + b[1])
-print(str(c))
-
-
+g.play()
 
 
