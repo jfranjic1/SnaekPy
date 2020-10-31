@@ -1,5 +1,6 @@
 from random import  randint
 import pygame
+
 class Food:
     def __init__(self):
         self.x = randint (1,79)

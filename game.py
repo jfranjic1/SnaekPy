@@ -6,12 +6,19 @@ UP = (0,-1)
 DOWN = (0,1)
 LEFT = (-1,0)
 RIGHT = (1,0)
+
+###########################################
+# if NAN then no important key is pressed #
+##########################################
 NAN = (0,0)
+##########################################################
+# if ADD then space key is pressed (usefull for testing) #
+#########################################################
 ADD = (69,69)
+
 class Game:
     def __init__(self):
-        print("got called")
-
+        pass
     def play(self):
         pygame.init()
         x = 800
@@ -35,7 +42,7 @@ class Game:
         f= food.Food()
         f.draw(surface)
         while(1):
-            clock.tick(20)
+            clock.tick(30)
             s.changeDirection(self.keypress())
             try:
                 s.move(surface)

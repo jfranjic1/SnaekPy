@@ -9,11 +9,12 @@ LEFT = (-1,0)
 RIGHT = (1,0)
 NAN = (0,0)
 ADD = (69,69)
+
 class Snaek:
     def __init__(self):
         self.lenght = 1
         self.direction = RIGHT
-        self.positions = [(50, 50, self.direction), (50,51, RIGHT), (50,52, RIGHT)]#,(50, 53, self.direction), (50,54, RIGHT), (50,55, RIGHT)]
+        self.positions = [(50, 50, self.direction), (50,51, RIGHT), (50,52, RIGHT)]
         self.color = (17, 24, 47)
         self.last = (50,52, RIGHT)
         self.counter = 3
@@ -44,35 +45,38 @@ class Snaek:
         self.lastdirection = self.last[2]
 
         if(self.direction == RIGHT):
-
             temp = pygame.Rect(((self.positions[0][0] + i/10)*snakesize,self.positions[0][1]*snakesize),(snakesize/10,snakesize))
             pygame.draw.rect(surface,self.color, temp)
-        if (self.direction == LEFT):
 
+        if (self.direction == LEFT):
             temp = pygame.Rect(((self.positions[0][0]+ 1 - (i+1) / 10) * snakesize, self.positions[0][1] * snakesize),(snakesize / 10, snakesize))
             pygame.draw.rect(surface, self.color, temp)
-        if (self.direction == UP):
 
+        if (self.direction == UP):
             temp = pygame.Rect(((self.positions[0][0]) * snakesize, (self.positions[0][1] + 1 - (i+1) / 10 )* snakesize),(snakesize , snakesize / 10))
             pygame.draw.rect(surface, self.color, temp)
-        if (self.direction == DOWN):
 
+        if (self.direction == DOWN):
             temp = pygame.Rect(((self.positions[0][0]) * snakesize, (self.positions[0][1] + 1 - (i+1) / 10 )* snakesize),(snakesize , snakesize / 10))
             pygame.draw.rect(surface, self.color, temp)
 
         if (self.lastdirection == RIGHT):
             temp = pygame.Rect(((self.last[0] + i / 10) * snakesize, self.last[1] * snakesize),(snakesize / 10, snakesize))
             pygame.draw.rect(surface, (100, 100, 100), temp)
+
         if (self.lastdirection == LEFT):
             temp = pygame.Rect(((self.last[0] +1 - (i+1) / 10) * snakesize, self.last[1] * snakesize),(snakesize / 10, snakesize))
             pygame.draw.rect(surface, (100, 100, 100), temp)
+
         if (self.lastdirection == UP):
             temp = pygame.Rect(((self.last[0]) * snakesize, (self.last[1] +1 - (i+1)/ 10) * snakesize),
                                (snakesize, snakesize / 10))
             pygame.draw.rect(surface, (100, 100, 100), temp)
+
         if (self.lastdirection == DOWN):
             temp = pygame.Rect((self.last[0] * snakesize, (self.last[1] + i / 10) * snakesize),(snakesize, snakesize / 10))
             pygame.draw.rect(surface, (100, 100, 100), temp)
+
     def addItem(self):
         self.positions.insert(1,self.positions[0])
 
@@ -80,7 +84,6 @@ class Snaek:
         if(self.positions[0][0] == x and self.positions[0][1] == y):
             self.counter+=1
             return True
-
         return False
 
     def foodValid(self, x, y):
@@ -89,8 +92,6 @@ class Snaek:
             return True
 
     def ateIteself(self, x, y):
-        snakesize = 10
-        print("called")
         for temp in self.positions:
             if(temp[0] == x and temp[1] == y):
                 self.alive = False
