@@ -21,11 +21,18 @@ class Game:
         surface = surface.convert()
         temp = pygame.Rect((0,0),(800,600))
         pygame.draw.rect(surface,(100,100,100),temp)
-
+        temp = pygame.Rect((0,0),(800,10))
+        pygame.draw.rect(surface, (0, 0, 0), temp)
+        temp = pygame.Rect((0, 590), (800, 10))
+        pygame.draw.rect(surface, (0, 0, 0), temp)
+        temp = pygame.Rect((0, 0), (10, 800))
+        pygame.draw.rect(surface, (0, 0, 0), temp)
+        temp = pygame.Rect((790, 0), (10, 800))
+        pygame.draw.rect(surface, (0, 0, 0), temp)
         s = snaek.Snaek()
 
         while(1):
-            clock.tick(2)
+            clock.tick(20)
             s.changeDirection(self.keypress())
             s.move(surface)
             screen.blit(surface,(0,0))
