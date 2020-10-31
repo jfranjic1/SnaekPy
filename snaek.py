@@ -18,7 +18,9 @@ class Snaek:
         self.last = (50,52, RIGHT)
         self.counter = 3
         self.lastdirection = self.direction
+        self.alive = True
     def move(self,surface):
+        if(not self.alive): return
         if(self.ateIteself(self.positions[0][0] + self.direction[0], self.positions[0][1] + self.direction[1])):raise
         if (self.offLimit(self.positions[0][0] + self.direction[0], self.positions[0][1] + self.direction[1])): raise
         self.positions.insert(0, (self.positions[0][0] + self.direction[0], self.positions[0][1] + self.direction[1], self.direction))
@@ -90,11 +92,15 @@ class Snaek:
         snakesize = 10
         print("called")
         for temp in self.positions:
-            if(temp[0] == x and temp[1] == y): return True
+            if(temp[0] == x and temp[1] == y):
+                self.alive = False
+                return True
         return False
 
     def offLimit(self, x,y):
-        if(x<1 or x>79 or y<1 or y > 58):return True
+        if(x<1 or x>79 or y<1 or y > 58):
+            self.alive = False
+            return True
         return False
 
 

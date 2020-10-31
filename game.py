@@ -36,7 +36,7 @@ class Game:
         f.draw(surface)
         while(1):
             clock.tick(20)
-            s.changeDirection(self.keypress(s))
+            s.changeDirection(self.keypress())
             try:
                 s.move(surface)
             except:
@@ -52,15 +52,15 @@ class Game:
             screen.blit(surface,(0,0))
             pygame.display.update()
 
-    def keypress(self,s):
+    def keypress(self):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP: return UP
                 if event.key == pygame.K_DOWN: return DOWN
                 if event.key == pygame.K_LEFT: return LEFT
                 if event.key == pygame.K_RIGHT: return RIGHT
+                if event.key == pygame.K_SPACE: return ADD
                 return NAN
-
         return NAN
 
     def gameOver(self,surface,score):
