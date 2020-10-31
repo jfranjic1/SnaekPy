@@ -25,7 +25,7 @@ class Game:
         s = snaek.Snaek()
 
         while(1):
-            clock.tick(20)
+            clock.tick(2)
             s.changeDirection(self.keypress())
             s.move(surface)
             screen.blit(surface,(0,0))
